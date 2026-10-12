@@ -5,64 +5,95 @@
 .card h3{margin:0 0 8px;font-size:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.f{display:grid;grid-template-columns:1fr 1fr;gap:8px}.f label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:#8b949e;min-width:0}.f .w{grid-column:1/-1}
 .f input,.f textarea,.f select{width:100%;min-width:0}.f textarea{min-height:64px;resize:vertical}.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.sg{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}.sg button{background:#1c2a44;color:#79c0ff;border:1px dashed #388bfd;border-radius:999px;padding:5px 10px;font:inherit;font-size:12px;cursor:pointer;min-height:32px}
 .lp{width:56px;height:56px;border-radius:10px;object-fit:cover;background:#21262d}.ck{flex-direction:row!important;align-items:center;gap:8px!important}.ck input{width:22px!important;height:22px;min-height:0!important}.miss{color:#ff7b72;font-size:12px;margin-top:6px}
-@media (max-width:768px){.grid{grid-template-columns:1fr}.f{grid-template-columns:1fr}.sg button{min-height:44px}.row button.b{flex:1 1 45%}}</style></head><body>
+@media (max-width:768px){.grid{grid-template-columns:1fr}.f{grid-template-columns:1fr}.sg button{min-height:44px}.row button.b{flex:1 1 45%}}.ready{border:2px solid #2ea043;background:#0c2615;border-radius:14px;padding:12px 14px;margin:14px 0}.ready h2{margin:4px 0 10px;color:#56d364}
+.fl{display:grid;grid-template-columns:130px 1fr auto;gap:6px 10px;align-items:center;font-size:14px;border-bottom:1px solid #21262d;padding:4px 0}.fl .v{min-width:0;word-break:break-word}.fl button{min-height:36px}
+.sgc{background:#161b22;border:1px dashed #388bfd;border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:4px;min-width:0}.sgw{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:8px 0 16px}
+.bozza{background:#30363d;color:#c9d1d9}.tg{display:flex;align-items:center;gap:8px;min-height:44px;font-size:14px}.tg input{width:22px;height:22px}
+@media (max-width:768px){.fl{grid-template-columns:1fr auto}.fl .k{grid-column:1/-1;color:#8b949e;font-size:12px}.fl button{min-height:44px}}</style></head><body>
 <header><h1>📈 Pons Radar · Preset lancio</h1><div class="sub">Bozze meme token pronte, salvate solo nel tuo browser</div><nav><a href="index.html">Radar</a><a href="preset.html" class="on">Preset lancio</a></nav></header>
 <main>
-<div class="warn">📝 Qui prepari solo i <b>dati</b> del lancio (gli stessi campi del form Pons). Nessun lancio, firma o transazione parte da questa pagina. Le bozze restano nel <code>localStorage</code> di questo browser: usa <b>Esporta JSON</b> per salvarle e, se vuoi, committale nel repo come <code>presets.json</code> (il radar le collega alle novità). Il logo caricato è salvato come dataURL: <b>per il lancio va prima caricato su IPFS</b> (URI <code>ipfs://…</code>). Ricorda: i Termini di Pons escludono gli utenti UE.</div>
-<div class="ctrl"><select id="stock"></select><button class="b p" id="add">+ Nuova bozza</button><button class="b" id="exp">Esporta JSON</button><button class="b" id="imp">Importa JSON</button><input type="file" id="file" accept="application/json,.json" hidden></div>
-<div class="ctrl"><input id="q" type="search" placeholder="Filtra bozze…" autocomplete="off"><select id="fst"><option value="">Tutte</option><option value="ok">Pronto</option><option value="no">Incompleto</option></select></div>
-<div id="repo"></div><div class="grid" id="list"></div>
+<div class="warn">📝 Qui prepari solo i <b>dati</b> del lancio (gli stessi campi del form Pons). Nessun lancio automatico, nessuna firma, nessuna chiave: il lancio, se mai, lo fai tu a mano. Le bozze restano nel <code>localStorage</code> di questo browser: usa <b>Esporta JSON</b> per salvarle e, se vuoi, committale nel repo come <code>presets.json</code>. Il logo caricato è salvato come dataURL: <b>per il lancio va caricato su IPFS</b>. I Termini di Pons escludono gli utenti UE (Italia inclusa).</div>
+<div id="ready"></div>
+<h2>Nuova bozza</h2>
+<div class="ctrl"><select id="stock"></select><button class="b p" id="add">+ Bozza vuota</button><button class="b" id="exp">Esporta JSON</button><button class="b" id="imp">Importa JSON</button><input type="file" id="file" accept="application/json,.json" hidden></div>
+<div class="mut" id="sgt"></div><div class="sgw" id="sg"></div>
+<div id="repo"></div>
+<h2>Le mie bozze</h2>
+<div class="ctrl"><input id="q" type="search" placeholder="Filtra bozze…" autocomplete="off"><select id="fst"><option value="">Tutte</option><option value="ok">Pronto</option><option value="no">Bozza</option></select></div>
+<div class="grid" id="list"></div>
 </main>
-<footer>Campi del lancio Pons V2: nome, simbolo, descrizione, logo, social (X, Telegram, Discord, sito, Farcaster), tassa creatore (max 10%), buyback, destinatario fee (facoltativo, se vuoto = chi lancia), dev-buy. I nomi suggeriti sono generati con regole semplici e sono solo spunti.</footer>
+<footer>Campi obbligatori per “Pronto”: nome, ticker, descrizione, immagine (più tassa 0–10% e indirizzo fee valido se compilati). Facoltativi: X, Telegram, Discord, sito, Farcaster, buyback, destinatario fee (vuoto = chi lancia), dev-buy, note. Più bozze per lo stesso titolo sono permesse. I nomi suggeriti sono generati con regole per settore: verifica sempre marchi e nomi prima di usarli.</footer>
+<script src="suggest.js"></script>
 <script>
-const D=/*__DATA__*/null, data=D.data, KEY='pons_preset_v1';
+const D=/*__DATA__*/null, data=D.data, KEY='pons_preset_v1';window.PONS_DATA=data;
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const stocks=data.token.filter(t=>t.robinhood).sort((a,b)=>a.ticker.localeCompare(b.ticker));
 const SL={pons:'Già su Pons',candidato:'Candidato',nuovo:'Nuovo su Robinhood'};
-document.getElementById('stock').innerHTML=stocks.map(t=>`<option value="${E(t.ticker)}">${E(t.ticker)} · ${E(t.nome)} (${SL[t.stato]||t.stato})</option>`).join('');
-const FIELDS=[['nome','Nome token'],['ticker','Ticker / simbolo'],['descrizione','Descrizione','w','ta'],['logo','Logo (URL o carica file)','w'],['x','X (Twitter)'],['telegram','Telegram'],['discord','Discord'],['sito','Sito web'],['farcaster','Farcaster'],['tassa','Tassa creatore % (0–10)'],['fee','Destinatario fee (facoltativo)','w'],['devbuy','Dev-buy (importo nel pair token)'],['note','Note','w','ta']];
+const sel=document.getElementById('stock');
+sel.innerHTML=['pons','nuovo','candidato'].map(k=>`<optgroup label="${SL[k]}">`+stocks.filter(t=>t.stato===k).map(t=>`<option value="${E(t.ticker)}">${E(t.ticker)} · ${E(t.nome)}</option>`).join('')+'</optgroup>').join('');
+const FIELDS=[['nome','Nome token'],['ticker','Ticker / simbolo'],['descrizione','Descrizione','w','ta'],['logo','Immagine (URL o carica file)','w'],['x','X (Twitter)'],['telegram','Telegram'],['discord','Discord'],['sito','Sito web'],['farcaster','Farcaster'],['tassa','Tassa creatore % (0–10)'],['fee','Destinatario fee (facoltativo)','w'],['devbuy','Dev-buy (importo nel pair token)'],['note','Note','w','ta']];
 let drafts=[];try{drafts=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(drafts))}catch(e){alert('Spazio del browser esaurito: usa un URL per il logo invece del file.')}};
-function sugg(t){const T=t.ticker.toUpperCase().replace(/[^A-Z0-9]/g,''),n=(t.nome||T).split(/[ ,.]/)[0];
- return [[`${n} Inu`,`${T.slice(0,4)}INU`],[`Baby ${T}`,`B${T}`.slice(0,8)],[`${n} Moon`,`${T}MOON`.slice(0,8)],[`${T} Pepe`,`P${T}`.slice(0,8)],[`Diamond Hands ${T}`,`DH${T}`.slice(0,8)],[`${n} Cat`,`${T}CAT`.slice(0,8)]]}
-function check(d){const m=[];if(!d.nome)m.push('nome');if(!d.ticker)m.push('ticker');if(!d.descrizione)m.push('descrizione');if(!d.logo)m.push('logo');
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(drafts))}catch(e){alert('Spazio del browser esaurito: usa un URL per l\'immagine invece del file.')}};
+const stockOf=d=>stocks.find(s=>s.ticker===d.stock)||{ticker:d.stock,nome:'',stato:''};
+function check(d){const m=[];if(!d.nome)m.push('nome');if(!d.ticker)m.push('ticker');if(!d.descrizione)m.push('descrizione');if(!d.logo)m.push('immagine');
  const tx=parseFloat(d.tassa);if(d.tassa!==''&&d.tassa!=null&&(isNaN(tx)||tx<0||tx>10))m.push('tassa 0–10%');
  if(d.fee&&!/^0x[0-9a-fA-F]{40}$/.test(d.fee))m.push('indirizzo fee non valido');if(d.devbuy&&(isNaN(parseFloat(d.devbuy))||parseFloat(d.devbuy)<0))m.push('dev-buy non valido');return m}
-function txt(d){const st=stocks.find(s=>s.ticker===d.stock);return [`Bozza lancio Pons — pair: ${d.stock}${st?' ('+st.indirizzo+')':''}`,`Nome: ${d.nome||''}`,`Ticker: ${d.ticker||''}`,`Descrizione: ${d.descrizione||''}`,`Logo: ${(d.logo||'').startsWith('data:')?'[file locale, da caricare su IPFS]':d.logo||''}`,`X: ${d.x||''}`,`Telegram: ${d.telegram||''}`,`Discord: ${d.discord||''}`,`Sito: ${d.sito||''}`,`Farcaster: ${d.farcaster||''}`,`Tassa creatore: ${d.tassa||0}%`,`Buyback: ${d.buyback?'attivo':'disattivo'}`,`Destinatario fee: ${d.fee||'(chi lancia)'}`,`Dev-buy: ${d.devbuy||0}`,`Note: ${d.note||''}`].join('\n')}
-function card(d,i,ro){const st=stocks.find(s=>s.ticker===d.stock)||{ticker:d.stock,nome:'',stato:''};const m=check(d);
- return `<div class="card" id="${E(d.stock)}" data-i="${i}"><h3>${d.logo?`<img class="lp" src="${E(d.logo)}" alt="">`:''}<span>${E(d.nome||'(senza nome)')} <span class="mut">$${E(d.ticker||'—')}</span></span><span class="bd ${m.length?'inc':'pons'}">${m.length?'Incompleto':'Pronto'}</span></h3>
- <div class="mut">Pair: <b>${E(st.ticker)}</b> ${E(st.nome)} · <span class="bd ${st.stato}">${SL[st.stato]||'—'}</span>${ro?' · <b>da presets.json (repo)</b>':''}</div>
- ${ro?'':`<div class="mut" style="margin-top:8px">Suggerimenti automatici (regole, solo spunti):</div><div class="sg">${sugg(st).map(([n,t])=>`<button data-sn="${E(n)}" data-st="${E(t)}">${E(n)} · $${E(t)}</button>`).join('')}</div>`}
- <div class="f">${FIELDS.map(([k,l,w,ta])=>`<label class="${w||''}">${l}${ta?`<textarea data-k="${k}" ${ro?'readonly':''}>${E(d[k])}</textarea>`:`<input data-k="${k}" value="${E(d[k])}" ${ro?'readonly':''} ${k==='tassa'||k==='devbuy'?'inputmode="decimal"':''} autocomplete="off">`}</label>`).join('')}
- ${ro?'':'<label class="w">Carica logo (salvato come dataURL, max ~300 KB)<input type="file" accept="image/*" data-up="1"></label>'}
- <label class="ck w"><input type="checkbox" data-k="buyback" ${d.buyback?'checked':''} ${ro?'disabled':''}> Buyback attivo</label></div>
- ${m.length?`<div class="miss">Manca: ${m.map(E).join(', ')}</div>`:''}
+const isReady=d=>!!d.pronto&&!check(d).length;
+const val=(d,k)=>k==='buyback'?(d.buyback?'attivo':'disattivo'):k==='logo'&&(d.logo||'').startsWith('data:')?'[file locale: scarica e carica su IPFS]':k==='tassa'?(d.tassa||0)+'%':k==='fee'?(d.fee||'(chi lancia)'):(d[k]??'');
+function txt(d){const st=stockOf(d);return [`Bozza lancio Pons — pair: ${d.stock}${st.indirizzo?' ('+st.indirizzo+')':''}`].concat(FIELDS.concat([['buyback','Buyback']]).map(([k,l])=>`${l}: ${val(d,k)}`)).join('\n')}
+function card(d,i,ro){const st=stockOf(d),m=check(d),r=isReady(d);
+ return `<div class="card" data-i="${i}"><h3>${d.logo?`<img class="lp" src="${E(d.logo)}" alt="">`:''}<span>${E(d.nome||'(senza nome)')} <span class="mut">$${E(d.ticker||'—')}</span></span><span class="bd ${r?'pons':'bozza'}">${r?'Pronto':'Bozza'}</span></h3>
+ <div class="mut">Pair: <b>${E(st.ticker)}</b> ${E(st.nome)} · <span class="bd ${st.stato}">${SL[st.stato]||'—'}</span>${ro?' · <b>da presets.json (repo)</b>':''}${d.angolo?' · angolo: '+E(d.angolo):''}</div>
+ <div class="f" style="margin-top:8px">${FIELDS.map(([k,l,w,ta])=>`<label class="${w||''}">${l}${ta?`<textarea data-k="${k}" ${ro?'readonly':''}>${E(d[k])}</textarea>`:`<input data-k="${k}" value="${E(d[k])}" ${ro?'readonly':''} ${k==='tassa'||k==='devbuy'?'inputmode="decimal"':''} autocomplete="off">`}</label>`).join('')}
+ ${ro?'':'<label class="w">Carica immagine (salvata come dataURL, max ~300 KB)<input type="file" accept="image/*" data-up="1"></label>'}
+ <label class="ck w"><input type="checkbox" data-k="buyback" ${d.buyback?'checked':''} ${ro?'disabled':''}> Buyback attivo</label>
+ <label class="ck w"><input type="checkbox" data-k="pronto" ${d.pronto?'checked':''} ${ro?'disabled':''}> Segna come <b>Pronto</b> (vale solo se tutti i campi obbligatori sono compilati)</label></div>
+ <div class="miss" ${m.length?'':'hidden'}>${m.length?'Manca: '+m.map(E).join(', '):''}</div>
  <div class="row"><button class="b p" data-a="copy">Copia tutto</button>${ro?'<button class="b" data-a="clone">Copia nelle mie bozze</button>':'<button class="b" data-a="dup">Duplica</button><button class="b d" data-a="del">Elimina</button>'}</div></div>`}
-const repo=(D.presets&&D.presets.bozze)||[];
+const repo=((D.presets&&D.presets.bozze)||[]).map(d=>Object.assign({pronto:true},d));
+function readyBox(){const all=drafts.map((d,i)=>[d,i,false]).concat(repo.map((d,i)=>[d,'r'+i,true])).filter(([d])=>isReady(d)&&stockOf(d).stato==='pons');
+ if(!all.length)return '';
+ return `<div class="ready"><h2>🚀 Pronti da lanciare (${all.length})</h2><div class="mut" style="margin-bottom:8px">Bozze “Pronto” il cui titolo è già approvato come pair su Pons. Copia i campi e completa il lancio a mano su <a href="https://ponsfamily.com/launchpad" target="_blank" rel="noopener">ponsfamily.com/launchpad</a> (ricorda la restrizione UE nei Termini).</div>`+
+ all.map(([d,i])=>{const st=stockOf(d);return `<div class="card" data-i="${i}" style="margin-bottom:12px"><h3>${d.logo?`<img class="lp" src="${E(d.logo)}" alt="">`:''}<span>${E(d.nome)} <span class="mut">$${E(d.ticker)}</span></span><span class="bd pons">Pair ${E(st.ticker)} su Pons${st.approvato_ts?' dal '+new Date(st.approvato_ts*1000).toLocaleDateString('it-IT'):''}</span></h3>
+ <div class="fl"><span class="k">Pair token</span><span class="v addr">${E(st.ticker)} · ${E(st.indirizzo)}</span><button class="b" data-cp="${E(st.indirizzo)}">Copia</button></div>
+ ${FIELDS.concat([['buyback','Buyback']]).filter(([k])=>k!=='note').map(([k,l])=>`<div class="fl"><span class="k">${l}</span><span class="v">${E(val(d,k))||'<span class=mut>—</span>'}</span>${k==='logo'?`<button class="b" data-a="img">Scarica immagine</button>`:`<button class="b" data-cp="${E(val(d,k))}">Copia</button>`}</div>`).join('')}
+ <div class="row"><button class="b p" data-a="copy">Copia tutto</button><a class="b p" style="text-decoration:none;display:inline-flex;align-items:center;padding:8px 14px;border-radius:8px;background:#1f6feb;color:#fff" href="https://ponsfamily.com/launchpad" target="_blank" rel="noopener">Apri Pons launchpad ↗</a></div></div>`}).join('')+'</div>'}
+function renderSugg(){const st=stocks.find(s=>s.ticker===sel.value);if(!st)return;const S=suggerimenti(st);
+ document.getElementById('sgt').innerHTML=`Suggerimenti automatici per <b>${E(st.ticker)}</b> ${E(st.nome)} (settore: ${E(S.settore)}; regole, solo spunti):`;
+ document.getElementById('sg').innerHTML=S.lista.map((x,j)=>`<div class="sgc"><b>${E(x.nome)}</b><span class="mut">$${E(x.ticker)}</span><span style="font-size:13px">${E(x.descrizione)}</span><span class="mut">Angolo: ${E(x.angolo)}</span><button class="b p" data-use="${j}">Usa questo</button></div>`).join('')}
 function render(){const q=document.getElementById('q').value.toLowerCase(),f=document.getElementById('fst').value;
- const ok=d=>(!q||JSON.stringify([d.stock,d.nome,d.ticker]).toLowerCase().includes(q))&&(!f||(f==='ok')===!check(d).length);
- document.getElementById('list').innerHTML=drafts.map((d,i)=>ok(d)?card(d,i,false):'').join('')||'<div class="mut">Nessuna bozza: scegli un titolo e premi “Nuova bozza”.</div>';
- document.getElementById('repo').innerHTML=repo.length?'<h2>Preset nel repo (presets.json)</h2><div class="grid">'+repo.map((d,i)=>ok(d)?card(d,'r'+i,true):'').join('')+'</div><h2>Le mie bozze</h2>':'';}
-const blank=s=>({id:Date.now()+''+Math.random().toString(36).slice(2,6),stock:s,nome:'',ticker:'',descrizione:'',logo:'',x:'',telegram:'',discord:'',sito:'',farcaster:'',tassa:'',buyback:false,fee:'',devbuy:'',note:''});
-document.getElementById('add').onclick=()=>{drafts.unshift(blank(document.getElementById('stock').value));save();render()};
+ const ok=d=>(!q||JSON.stringify([d.stock,d.nome,d.ticker]).toLowerCase().includes(q))&&(!f||(f==='ok')===isReady(d));
+ document.getElementById('ready').innerHTML=readyBox();
+ document.getElementById('list').innerHTML=drafts.map((d,i)=>ok(d)?card(d,i,false):'').join('')||'<div class="mut">Nessuna bozza: scegli un titolo e premi “Usa questo” o “Bozza vuota”.</div>';
+ document.getElementById('repo').innerHTML=repo.length?'<h2>Preset nel repo (presets.json)</h2><div class="grid">'+repo.map((d,i)=>ok(d)?card(d,'r'+i,true):'').join('')+'</div>':''}
+const blank=s=>({id:Date.now()+''+Math.random().toString(36).slice(2,6),stock:s,nome:'',ticker:'',descrizione:'',logo:'',x:'',telegram:'',discord:'',sito:'',farcaster:'',tassa:'',buyback:false,fee:'',devbuy:'',note:'',pronto:false});
+document.getElementById('add').onclick=()=>{drafts.unshift(blank(sel.value));save();render();document.querySelector('#list .card')?.scrollIntoView({behavior:'smooth'})};
+sel.onchange=renderSugg;
+document.getElementById('sg').onclick=e=>{const b=e.target.closest('[data-use]');if(!b)return;const st=stocks.find(s=>s.ticker===sel.value),x=suggerimenti(st).lista[+b.dataset.use];
+ drafts.unshift(Object.assign(blank(sel.value),{nome:x.nome,ticker:x.ticker,descrizione:x.descrizione,angolo:x.angolo,logo:st.logo?'':''}));save();render();b.textContent='Aggiunta ✓';document.querySelector('#list .card')?.scrollIntoView({behavior:'smooth'})};
 document.getElementById('exp').onclick=()=>{const b=new Blob([JSON.stringify({bozze:drafts},null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='presets.json';a.click()};
 document.getElementById('imp').onclick=()=>document.getElementById('file').click();
 document.getElementById('file').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{const j=JSON.parse(t),arr=Array.isArray(j)?j:j.bozze||[];let n=0;arr.forEach(d=>{if(d&&d.stock){d.id=d.id||blank('').id;const k=drafts.findIndex(x=>x.id===d.id);k>=0?drafts[k]=Object.assign(blank(d.stock),d):drafts.push(Object.assign(blank(d.stock),d));n++}});save();render();alert(n+' bozze importate')}catch(x){alert('File JSON non valido')}});e.target.value=''};
 ['q','fst'].forEach(id=>document.getElementById(id).addEventListener('input',render));
 const L=document.querySelector('main');
-const get=el=>{const c=el.closest('.card');const i=c.dataset.i;return i[0]==='r'?[repo[+i.slice(1)],true]:[drafts[+i],false]};
-L.addEventListener('change',e=>{const el=e.target;if(!el.closest('.card'))return;const[d,ro]=get(el);if(ro)return;
- if(el.dataset.up){const f=el.files[0];if(!f)return;if(f.size>300000){alert('Immagine troppo grande (max ~300 KB): usa un URL.');return}const r=new FileReader();r.onload=()=>{d.logo=r.result;save();render()};r.readAsDataURL(f);return}
- if(el.dataset.k)upd(el)});
-function upd(el){const c=el.closest('.card');if(!c)return;const[d,ro]=get(el);if(ro||!el.dataset.k)return;d[el.dataset.k]=el.type==='checkbox'?el.checked:el.value;save();
- const m=check(d),bd=c.querySelector('h3 .bd');bd.className='bd '+(m.length?'inc':'pons');bd.textContent=m.length?'Incompleto':'Pronto';
- let x=c.querySelector('.miss');if(m.length){if(!x){x=document.createElement('div');x.className='miss';c.querySelector('.row').before(x)}x.textContent='Manca: '+m.join(', ')}else x?.remove();
- const sp=c.querySelector('h3 span');if(el.dataset.k==='nome'||el.dataset.k==='ticker')sp.innerHTML=E(d.nome||'(senza nome)')+' <span class="mut">$'+E(d.ticker||'—')+'</span>'}
-L.addEventListener('input',e=>{if(e.target.dataset.k&&e.target.type!=='checkbox')upd(e.target)});
+const get=el=>{const i=el.closest('.card').dataset.i;return i[0]==='r'?[repo[+i.slice(1)],true]:[drafts[+i],false]};
+function upd(el){const c=el.closest('.card');const[d,ro]=get(el);if(ro)return;d[el.dataset.k]=el.type==='checkbox'?el.checked:el.value;save();
+ const m=check(d),r=isReady(d),bd=c.querySelector('h3 .bd');bd.className='bd '+(r?'pons':'bozza');bd.textContent=r?'Pronto':'Bozza';
+ const x=c.querySelector('.miss');x.hidden=!m.length;x.textContent=m.length?'Manca: '+m.join(', '):'';
+ if(el.dataset.k==='nome'||el.dataset.k==='ticker')c.querySelector('h3 span').innerHTML=E(d.nome||'(senza nome)')+' <span class="mut">$'+E(d.ticker||'—')+'</span>';
+ if(el.dataset.k==='pronto'&&el.checked&&m.length)alert('Segnata come Pronto, ma resta “Bozza” finché manca: '+m.join(', '));
+ document.getElementById('ready').innerHTML=readyBox()}
+L.addEventListener('input',e=>{if(e.target.dataset.k&&e.target.type!=='checkbox'&&e.target.closest('.card'))upd(e.target)});
+L.addEventListener('change',e=>{const el=e.target;if(!el.closest('.card'))return;
+ if(el.dataset.up){const[d]=get(el);const f=el.files[0];if(!f)return;if(f.size>300000){alert('Immagine troppo grande (max ~300 KB): usa un URL.');return}const r=new FileReader();r.onload=()=>{d.logo=r.result;save();render()};r.readAsDataURL(f);return}
+ if(el.dataset.k&&el.type==='checkbox')upd(el)});
+const copy=(t,b)=>navigator.clipboard?.writeText(t).then(()=>{const o=b.textContent;b.textContent='Copiato ✓';setTimeout(()=>b.textContent=o,1200)},()=>prompt('Copia:',t));
 L.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||!b.closest('.card'))return;const[d]=get(b);
- if(b.dataset.sn){d.nome=b.dataset.sn;d.ticker=b.dataset.st;save();render();return}
- const a=b.dataset.a;if(a==='copy'){navigator.clipboard?.writeText(txt(d)).then(()=>{b.textContent='Copiato ✓'},()=>prompt('Copia:',txt(d)))}
+ if(b.dataset.cp!==undefined){copy(b.dataset.cp,b);return}
+ const a=b.dataset.a;if(a==='copy')copy(txt(d),b);
+ if(a==='img'){if(!d.logo)return;const l=document.createElement('a');l.href=d.logo;l.download=(d.ticker||'logo')+'.'+(((d.logo.match(/^data:image\/(\w+)/)||[])[1])||'png');l.target='_blank';l.rel='noopener';l.click()}
  if(a==='del'&&confirm('Eliminare la bozza?')){drafts=drafts.filter(x=>x!==d);save();render()}
  if(a==='dup'||a==='clone'){drafts.unshift(Object.assign({},d,{id:blank('').id}));save();render()}});
-render();if(location.hash){const s=decodeURIComponent(location.hash.slice(1));if(stocks.some(t=>t.ticker===s))document.getElementById('stock').value=s;document.getElementById(s)?.scrollIntoView()}
-</script></body></html>
+if(location.hash){const s=decodeURIComponent(location.hash.slice(1));if(stocks.some(t=>t.ticker===s))sel.value=s}
+renderSugg();render();
+</script><script src="live.js"></script></body></html>
