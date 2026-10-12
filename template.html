@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Pons Radar"><meta name="theme-color" content="#161b22"><meta name="format-detection" content="telephone=no"><meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E📈%3C/text%3E%3C/svg%3E">
+<title>📈 Pons Radar · pair token su Robinhood Chain</title><link rel="stylesheet" href="style.css"></head><body>
+<header><h1>📈 Pons Radar</h1><div class="sub" id="sub"></div><nav><a href="index.html" class="on">Radar</a><a href="preset.html">Preset lancio</a></nav></header>
+<main>
+<div class="warn">⚠️ Strumento di <b>solo monitoraggio e preparazione</b>: nessuna firma, nessuna chiave, nessuna transazione. I Termini di Pons escludono gli utenti dell'Unione Europea (Italia inclusa). Non è consulenza finanziaria o legale.</div>
+<div id="err"></div>
+<h2>🔔 Novità</h2><div class="mut" id="novsub"></div><div class="nov" id="nov"></div>
+<div class="cnt" id="cnt"></div>
+<div class="ctrl"><input id="q" type="search" placeholder="Cerca ticker, nome o indirizzo…" autocomplete="off"><select id="fs"><option value="">Tutti gli stati</option><option value="pons">Già su Pons</option><option value="candidato">Candidato</option><option value="nuovo">Nuovo su Robinhood</option><option value="revocato">Revocato</option></select>
+<label class="mut"><input type="checkbox" id="onlyrh" style="width:auto;min-height:0"> Solo token Robinhood</label></div>
+<div class="mut" id="nres"></div>
+<table class="rt"><thead><tr><th>Token</th><th>Stato</th><th>Approvato su Pons</th><th>Economia pair</th><th>Indirizzo</th><th>Link</th></tr></thead><tbody id="tb"></tbody></table>
+</main>
+<footer>Il rilevamento gira ogni 5 minuti tramite GitHub Actions (gli orari di GitHub possono slittare di alcuni minuti). Per una velocità al secondo servirebbe un server sempre acceso con websocket/feed del sequencer.<br>
+Fonti: lista ufficiale Robinhood <code>api.robinhood.com/rhj/assets</code> (chain 4663), eventi <code>PairTokenApprovalUpdated</code>/<code>PairTokenEconomicsUpdated</code> della factory Pons V2 <span class="addr" id="fac"></span> e lettura <code>approvedPairTokens()</code> via RPC pubblico. Gli indirizzi sono confrontati solo con la lista Robinhood: un token con lo stesso ticker ma indirizzo diverso è segnalato come possibile imitazione.</footer>
+<script>
+const D=/*__DATA__*/null, data=D.data, ST={pons:'Già su Pons',candidato:'Candidato',nuovo:'Nuovo su Robinhood',revocato:'Revocato',altro:'Altro'};
+const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dt=t=>t?new Date(t*1000).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
+const ago=t=>{const s=Date.now()/1000-t;return s<3600?Math.round(s/60)+' min fa':s<86400?Math.round(s/3600)+' h fa':Math.round(s/86400)+' g fa'};
+const EX='https://robinhoodchain.blockscout.com';const presets=(D.presets&&D.presets.bozze)||[];
+document.getElementById('sub').textContent=`Ultimo aggiornamento: ${dt(data.aggiornato)} (${ago(data.aggiornato)}) · blocco ${data.blocco.toLocaleString('it-IT')}`;
+document.getElementById('fac').textContent=data.factory;
+if(data.errori.length)document.getElementById('err').innerHTML='<div class="warn">'+data.errori.map(E).join('<br>')+'</div>';
+const NL={approvato:'✅ Approvato su Pons',revocato:'⛔ Revocato su Pons',nuovo_rh:'🆕 Nuovo su Robinhood'};
+document.getElementById('novsub').textContent='Approvazioni on-chain degli ultimi 30 giorni (orario del blocco) e nuovi token Robinhood rilevati dopo il '+dt(data.baseline_ts)+'.';
+document.getElementById('nov').innerHTML=data.novita.length?data.novita.slice(0,15).map(n=>{const p=presets.find(x=>(x.stock||'').toUpperCase()===n.ticker.toUpperCase());
+ return `<div class="nv ${n.tipo}${Date.now()/1000-n.ts<86400?' fresh':''}"><b>${NL[n.tipo]}</b><span><b>${E(n.ticker)}</b> ${E(n.nome)}${n.robinhood?'':' <span class="mut">(non Robinhood)</span>'}</span><span class="mut">${dt(n.ts)} · ${ago(n.ts)}</span><a href="${EX}/token/${E(n.indirizzo)}" target="_blank" rel="noopener">Explorer</a>${n.tipo==='approvato'?'<a href="https://ponsfamily.com/launchpad" target="_blank" rel="noopener">Pons</a>':''}${p?`<a href="preset.html#${encodeURIComponent(n.ticker)}">Preset: ${E(p.nome||p.ticker)}</a>`:''}</div>`}).join(''):'<div class="mut">Nessuna novità.</div>';
+const c=data.conteggi;let fs='';
+const C=[['','Token totali',data.token.length],['pons','Già su Pons',c.pons],['candidato','Candidati',c.candidato],['nuovo','Nuovi su Robinhood (7 g)',c.nuovo]];
+function rc(){document.getElementById('cnt').innerHTML=C.map(([k,l,n])=>`<button data-k="${k}" class="${fs===k?'on':''}"><b>${n}</b>${l}</button>`).join('')}
+const q=document.getElementById('q'),sel=document.getElementById('fs'),orh=document.getElementById('onlyrh');
+function econ(e){return e?`Soglia graduazione: <b>${e.soglia_graduazione?.toLocaleString('it-IT')}</b><br><span class="mut">phantom ${e.phantom?.toLocaleString('it-IT')} · ${e.decimali} dec.</span>`:'<span class="mut">—</span>'}
+function render(){fs=sel.value;rc();const s=q.value.trim().toLowerCase();
+ const r=data.token.filter(t=>(!fs||t.stato===fs)&&(!orh.checked||t.robinhood)&&(!s||(t.ticker+' '+t.nome+' '+t.indirizzo).toLowerCase().includes(s)));
+ document.getElementById('nres').textContent=r.length+' token mostrati';
+ document.getElementById('tb').innerHTML=r.map(t=>`<tr><td data-l="Token"><div>${t.logo?`<img class="lg" loading="lazy" src="${E(t.logo)}" alt="">`:''}<b>${E(t.ticker)}</b> ${E(t.nome)}${t.robinhood?'':'<br><span class="mut">non nella lista Robinhood</span>'}${t.sospetto?`<br><span class="bd inc">⚠️ ${E(t.sospetto)}</span>`:''}</div></td>
+ <td data-l="Stato"><span><span class="bd ${t.stato}">${ST[t.stato]}</span>${t.nuovo_rh&&t.stato!=='nuovo'?' <span class="bd nuovo">Nuovo RH</span>':''}</span></td>
+ <td data-l="Approvato"><span>${t.approvato_ts?dt(t.approvato_ts)+(t.approvato_tx?`<br><a href="${EX}/tx/${E(t.approvato_tx)}" target="_blank" rel="noopener">tx</a>`:''):'<span class="mut">—</span>'}</span></td>
+ <td data-l="Economia"><span>${t.stato==='pons'?econ(t.economia):'<span class="mut">—</span>'}</span></td>
+ <td data-l="Indirizzo"><span class="addr">${E(t.indirizzo)}</span></td>
+ <td data-l="Link"><span><a href="${E(t.explorer)}" target="_blank" rel="noopener">Explorer</a> · <a href="preset.html#${encodeURIComponent(t.ticker)}">Prepara preset</a>${t.stato==='pons'?' · <a href="https://ponsfamily.com/launchpad" target="_blank" rel="noopener">Pons</a>':''}</span></td></tr>`).join('')}
+document.getElementById('cnt').addEventListener('click',e=>{const b=e.target.closest('button');if(b){sel.value=b.dataset.k;render()}});
+[q,sel,orh].forEach(x=>x.addEventListener('input',render));render();
+</script></body></html>
