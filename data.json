@@ -1,6 +1,14 @@
 {
  "novita": [
   {
+   "tipo": "nuovo_rh",
+   "ts": 1792088046,
+   "ticker": "ZETA",
+   "nome": "Zeta Global",
+   "indirizzo": "0xe674c5c071821f48bb2d12cadb83617eff438f9e",
+   "robinhood": true
+  },
+  {
    "tipo": "approvato",
    "ts": 1791497927,
    "ticker": "AVGO",
@@ -110,19 +118,19 @@
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1792086497,
- "blocco": 89415025,
+ "aggiornato": 1792088046,
+ "blocco": 89430418,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
  "conteggi": {
   "pons": 78,
-  "nuovo": 0,
+  "nuovo": 1,
   "candidato": 124,
   "revocato": 0,
   "altro": 0,
   "pons_robinhood": 70,
-  "robinhood_totale": 194
+  "robinhood_totale": 195
  },
  "errori": [],
  "token": [
@@ -1973,6 +1981,25 @@
    "eventi": 1,
    "visto_rh_ts": 1791838614,
    "explorer": "https://robinhoodchain.blockscout.com/token/0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec"
+  },
+  {
+   "indirizzo": "0xe674c5c071821f48bb2d12cadb83617eff438f9e",
+   "ticker": "ZETA",
+   "nome": "Zeta Global",
+   "stato_rh": "active",
+   "logo": "https://cdn.robinhood.com/ncw_assets/logos/0xe674c5c071821f48bb2d12cadb83617eff438f9e.png",
+   "isin": "US98956A1051",
+   "decimali": 18,
+   "robinhood": true,
+   "stato": "nuovo",
+   "nuovo_rh": true,
+   "approvato_ts": null,
+   "approvato_tx": null,
+   "revocato_ts": null,
+   "economia": null,
+   "eventi": 0,
+   "visto_rh_ts": 1792088046,
+   "explorer": "https://robinhoodchain.blockscout.com/token/0xe674c5c071821f48bb2d12cadb83617eff438f9e"
   },
   {
    "indirizzo": "0x521cf887e6531c6f667b5bc4d896e5d9bfe8eb2e",
