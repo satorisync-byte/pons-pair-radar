@@ -97,29 +97,11 @@
    "indirizzo": "0x56910d4409f3a0c78c64dd8d0545ff0705389870",
    "robinhood": false,
    "tx": "0x0669d9bbb7ee89737f44df40740946f83273f85a7477e9740be344a3c5312dbb"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1789780456,
-   "ticker": "ORBIO",
-   "nome": "Orbio.so",
-   "indirizzo": "0xaa07a0e9209e16ac99708c3ec70159c6ef3128a3",
-   "robinhood": false,
-   "tx": "0xc91945e32c97a2f0e0b73e5533050116d768579859f93ada809087103e45212c"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1789780456,
-   "ticker": "SHROOM",
-   "nome": "MUSHROOM",
-   "indirizzo": "0xab093def657f15df31b33922a95e047add645b29",
-   "robinhood": false,
-   "tx": "0xc91945e32c97a2f0e0b73e5533050116d768579859f93ada809087103e45212c"
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1792370721,
- "blocco": 92204467,
+ "aggiornato": 1792372985,
+ "blocco": 92226642,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
