@@ -88,20 +88,11 @@
    "indirizzo": "0x07ebb29a38fbcb41563817e5e19f2cec619c90d2",
    "robinhood": false,
    "tx": "0x542055e63455ebf14d5744233f81cbcdbff670b196c228bef3943f8ef6d2ee0d"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1790014553,
-   "ticker": "Index",
-   "nome": "The Index",
-   "indirizzo": "0x56910d4409f3a0c78c64dd8d0545ff0705389870",
-   "robinhood": false,
-   "tx": "0x0669d9bbb7ee89737f44df40740946f83273f85a7477e9740be344a3c5312dbb"
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1792606140,
- "blocco": 94479741,
+ "aggiornato": 1792608483,
+ "blocco": 94502538,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
