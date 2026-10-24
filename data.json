@@ -83,8 +83,8 @@
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1792829224,
- "blocco": 96615865,
+ "aggiornato": 1792831065,
+ "blocco": 96633171,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
