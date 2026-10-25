@@ -71,20 +71,11 @@
    "indirizzo": "0x63c12667638f2ae6fc6ae09b43d98ec84a8586ea",
    "robinhood": false,
    "tx": "0x557f66db1ffc46efb54f8bab4e02d7fbdd93fa5d93dca0907f3c7e35c17f4473"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1790301579,
-   "ticker": "BUN",
-   "nome": "Bundle Cat",
-   "indirizzo": "0x07ebb29a38fbcb41563817e5e19f2cec619c90d2",
-   "robinhood": false,
-   "tx": "0x542055e63455ebf14d5744233f81cbcdbff670b196c228bef3943f8ef6d2ee0d"
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1792891968,
- "blocco": 97214389,
+ "aggiornato": 1792893915,
+ "blocco": 97232998,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
