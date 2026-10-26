@@ -62,20 +62,11 @@
    "indirizzo": "0x75742c18bc1f1c5c5f448f4c9d9c6f66dafaaa38",
    "robinhood": true,
    "tx": "0x247f802c02d1267c943897349a8339ae8977d4743d2957f0c8f649649342f1ef"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1790380172,
-   "ticker": "wsNET",
-   "nome": "Wrapped Staked NET",
-   "indirizzo": "0x63c12667638f2ae6fc6ae09b43d98ec84a8586ea",
-   "robinhood": false,
-   "tx": "0x557f66db1ffc46efb54f8bab4e02d7fbdd93fa5d93dca0907f3c7e35c17f4473"
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1792971770,
- "blocco": 97974886,
+ "aggiornato": 1792972998,
+ "blocco": 97986715,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
