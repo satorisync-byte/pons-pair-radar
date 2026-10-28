@@ -201,8 +201,8 @@
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1793223737,
- "blocco": 100393755,
+ "aggiornato": 1793226055,
+ "blocco": 100416241,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
@@ -332,11 +332,11 @@
    "approvato_tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec",
    "revocato_ts": null,
    "economia": {
-    "phantomQuote": "15705296781883194278",
-    "graduationThreshold": "39263241954707985697",
+    "phantomQuote": "7852648390941597139",
+    "graduationThreshold": "19631620977353992848",
     "decimali": 18,
-    "soglia_graduazione": 39.263242,
-    "phantom": 15.705297
+    "soglia_graduazione": 19.631621,
+    "phantom": 7.852648
    },
    "eventi": 1,
    "visto_rh_ts": 1793195979,
