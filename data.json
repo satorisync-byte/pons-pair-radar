@@ -71,74 +71,11 @@
    "indirizzo": "0x9bff87700337babf5099e99f322f888dafb1d551",
    "robinhood": true,
    "tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1791497927,
-   "ticker": "AVGO",
-   "nome": "Broadcom",
-   "indirizzo": "0x156e175dd063a8ce274c50654ef40e0032b3fbcf",
-   "robinhood": true,
-   "tx": "0x247f802c02d1267c943897349a8339ae8977d4743d2957f0c8f649649342f1ef"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1791497927,
-   "ticker": "DDOG",
-   "nome": "Datadog",
-   "indirizzo": "0x27c99fbde9d0d2aa4f4bfb4943f237843ddf6958",
-   "robinhood": true,
-   "tx": "0x247f802c02d1267c943897349a8339ae8977d4743d2957f0c8f649649342f1ef"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1791497927,
-   "ticker": "NBIS",
-   "nome": "Nebius Group",
-   "indirizzo": "0x9d9c6684f596f66a64c030b93a886d51fd4d7931",
-   "robinhood": true,
-   "tx": "0x247f802c02d1267c943897349a8339ae8977d4743d2957f0c8f649649342f1ef"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1791497927,
-   "ticker": "ORCL",
-   "nome": "Oracle",
-   "indirizzo": "0xb0992820e760d836549ba69bc7598b4af75dee03",
-   "robinhood": true,
-   "tx": "0x247f802c02d1267c943897349a8339ae8977d4743d2957f0c8f649649342f1ef"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1791497927,
-   "ticker": "P",
-   "nome": "Everpure",
-   "indirizzo": "0x1cdad396db64bda184d5182a97dd9b3c62100b7d",
-   "robinhood": true,
-   "tx": "0x247f802c02d1267c943897349a8339ae8977d4743d2957f0c8f649649342f1ef"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1791497927,
-   "ticker": "PENG",
-   "nome": "Penguin Solutions",
-   "indirizzo": "0x9b23573b156b52565012f5ce02cdf60afbaa70be",
-   "robinhood": true,
-   "tx": "0x247f802c02d1267c943897349a8339ae8977d4743d2957f0c8f649649342f1ef"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1791497927,
-   "ticker": "SOXX",
-   "nome": "iShares Semiconductor ETF",
-   "indirizzo": "0x75742c18bc1f1c5c5f448f4c9d9c6f66dafaaa38",
-   "robinhood": true,
-   "tx": "0x247f802c02d1267c943897349a8339ae8977d4743d2957f0c8f649649342f1ef"
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1794088563,
- "blocco": 108733218,
+ "aggiornato": 1794090567,
+ "blocco": 108752276,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
