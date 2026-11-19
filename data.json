@@ -1,6 +1,23 @@
 {
  "novita": [
   {
+   "tipo": "nuovo_rh",
+   "ts": 1795110269,
+   "ticker": "ANT",
+   "nome": "Anthropic, PBC Class A Common Stock",
+   "indirizzo": "0xbbb6c29bcc3a1028a2b54310df73f4f7a3bcb373",
+   "robinhood": true
+  },
+  {
+   "tipo": "approvato",
+   "ts": 1795096882,
+   "ticker": "ANT",
+   "nome": "Anthropic, PBC Class A Common Stock",
+   "indirizzo": "0xbbb6c29bcc3a1028a2b54310df73f4f7a3bcb373",
+   "robinhood": true,
+   "tx": "0x853a806e86414fe394d4fdfd27cd16bd503355f3565e5060ecc8e9c4b4cd1995"
+  },
+  {
    "tipo": "approvato",
    "ts": 1793210263,
    "ticker": "BMNR",
@@ -74,22 +91,47 @@
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1795078144,
- "blocco": 118095579,
+ "aggiornato": 1795110269,
+ "blocco": 118403356,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
  "conteggi": {
-  "pons": 86,
+  "pons": 87,
   "nuovo": 0,
   "candidato": 125,
   "revocato": 0,
   "altro": 0,
-  "pons_robinhood": 78,
-  "robinhood_totale": 203
+  "pons_robinhood": 79,
+  "robinhood_totale": 204
  },
  "errori": [],
  "token": [
+  {
+   "indirizzo": "0xbbb6c29bcc3a1028a2b54310df73f4f7a3bcb373",
+   "ticker": "ANT",
+   "nome": "Anthropic, PBC Class A Common Stock",
+   "stato_rh": "active",
+   "logo": "https://cdn.robinhood.com/ncw_assets/logos/0xbbb6c29bcc3a1028a2b54310df73f4f7a3bcb373.png",
+   "isin": "US03703U1079",
+   "decimali": 18,
+   "robinhood": true,
+   "stato": "pons",
+   "nuovo_rh": true,
+   "approvato_ts": 1795096882,
+   "approvato_tx": "0x853a806e86414fe394d4fdfd27cd16bd503355f3565e5060ecc8e9c4b4cd1995",
+   "revocato_ts": null,
+   "economia": {
+    "phantomQuote": "36539026714897719983",
+    "graduationThreshold": "91347566787244299958",
+    "decimali": 18,
+    "soglia_graduazione": 91.347567,
+    "phantom": 36.539027
+   },
+   "eventi": 1,
+   "visto_rh_ts": 1795110269,
+   "explorer": "https://robinhoodchain.blockscout.com/token/0xbbb6c29bcc3a1028a2b54310df73f4f7a3bcb373"
+  },
   {
    "indirizzo": "0x9a7842eded60b0fe1e03eec342c82a397c821ed0",
    "ticker": "BMNR",
