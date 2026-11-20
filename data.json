@@ -2,6 +2,14 @@
  "novita": [
   {
    "tipo": "nuovo_rh",
+   "ts": 1795184467,
+   "ticker": "TTEQ",
+   "nome": "T. Rowe Price Exchange-Traded Funds, Inc. T. Rowe Price Technology ETF",
+   "indirizzo": "0x80e10255a83b257f5a8674d363f547842aa53b8e",
+   "robinhood": true
+  },
+  {
+   "tipo": "nuovo_rh",
    "ts": 1795110269,
    "ticker": "ANT",
    "nome": "Anthropic, PBC Class A Common Stock",
@@ -91,19 +99,19 @@
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1795152981,
- "blocco": 118817612,
+ "aggiornato": 1795184467,
+ "blocco": 119115132,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
  "conteggi": {
   "pons": 87,
-  "nuovo": 0,
+  "nuovo": 1,
   "candidato": 125,
   "revocato": 0,
   "altro": 0,
   "pons_robinhood": 79,
-  "robinhood_totale": 204
+  "robinhood_totale": 205
  },
  "errori": [],
  "token": [
@@ -2171,6 +2179,25 @@
    "eventi": 1,
    "visto_rh_ts": 1791838614,
    "explorer": "https://robinhoodchain.blockscout.com/token/0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec"
+  },
+  {
+   "indirizzo": "0x80e10255a83b257f5a8674d363f547842aa53b8e",
+   "ticker": "TTEQ",
+   "nome": "T. Rowe Price Exchange-Traded Funds, Inc. T. Rowe Price Technology ETF",
+   "stato_rh": "active",
+   "logo": "https://cdn.robinhood.com/ncw_assets/logos/0x80e10255a83b257f5a8674d363f547842aa53b8e.png",
+   "isin": "US87283Q7925",
+   "decimali": 18,
+   "robinhood": true,
+   "stato": "nuovo",
+   "nuovo_rh": true,
+   "approvato_ts": null,
+   "approvato_tx": null,
+   "revocato_ts": null,
+   "economia": null,
+   "eventi": 0,
+   "visto_rh_ts": 1795184467,
+   "explorer": "https://robinhoodchain.blockscout.com/token/0x80e10255a83b257f5a8674d363f547842aa53b8e"
   },
   {
    "indirizzo": "0x521cf887e6531c6f667b5bc4d896e5d9bfe8eb2e",
