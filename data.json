@@ -18,14 +18,6 @@
    "robinhood": true
   },
   {
-   "tipo": "nuovo_rh",
-   "ts": 1795110269,
-   "ticker": "ANT",
-   "nome": "Anthropic, PBC Class A Common Stock",
-   "indirizzo": "0xbbb6c29bcc3a1028a2b54310df73f4f7a3bcb373",
-   "robinhood": true
-  },
-  {
    "tipo": "approvato",
    "ts": 1795096882,
    "ticker": "ANT",
@@ -108,8 +100,8 @@
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1795705286,
- "blocco": 123638463,
+ "aggiornato": 1795736686,
+ "blocco": 123836043,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
@@ -159,7 +151,6 @@
    "decimali": 18,
    "robinhood": true,
    "stato": "pons",
-   "nuovo_rh": true,
    "approvato_ts": 1795096882,
    "approvato_tx": "0x853a806e86414fe394d4fdfd27cd16bd503355f3565e5060ecc8e9c4b4cd1995",
    "revocato_ts": null,
