@@ -10,14 +10,6 @@
    "tx": "0x1c3d105931d25fce2a347db53f81972e808bc79bd007a8c5e53e38cdbde50665"
   },
   {
-   "tipo": "nuovo_rh",
-   "ts": 1795184467,
-   "ticker": "TTEQ",
-   "nome": "T. Rowe Price Exchange-Traded Funds, Inc. T. Rowe Price Technology ETF",
-   "indirizzo": "0x80e10255a83b257f5a8674d363f547842aa53b8e",
-   "robinhood": true
-  },
-  {
    "tipo": "approvato",
    "ts": 1795096882,
    "ticker": "ANT",
@@ -100,8 +92,8 @@
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1795757137,
- "blocco": 124017126,
+ "aggiornato": 1795793246,
+ "blocco": 124350771,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
@@ -126,7 +118,6 @@
    "decimali": 18,
    "robinhood": true,
    "stato": "pons",
-   "nuovo_rh": true,
    "approvato_ts": 1795442706,
    "approvato_tx": "0x1c3d105931d25fce2a347db53f81972e808bc79bd007a8c5e53e38cdbde50665",
    "revocato_ts": null,
