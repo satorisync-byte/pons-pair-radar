@@ -17,83 +17,11 @@
    "indirizzo": "0xbbb6c29bcc3a1028a2b54310df73f4f7a3bcb373",
    "robinhood": true,
    "tx": "0x853a806e86414fe394d4fdfd27cd16bd503355f3565e5060ecc8e9c4b4cd1995"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1793210263,
-   "ticker": "BMNR",
-   "nome": "BitMine Immersion Technologies",
-   "indirizzo": "0x9a7842eded60b0fe1e03eec342c82a397c821ed0",
-   "robinhood": true,
-   "tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1793210263,
-   "ticker": "DIS",
-   "nome": "Disney",
-   "indirizzo": "0x501b1b3b79750313ad2c4cccd08586c4c17d7283",
-   "robinhood": true,
-   "tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1793210263,
-   "ticker": "GDX",
-   "nome": "VanEck Gold Miners ETF",
-   "indirizzo": "0xbdfa7a06458aa26b8e736e0fc87ad37c3bb8ac2e",
-   "robinhood": true,
-   "tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1793210263,
-   "ticker": "JPM",
-   "nome": "JPMorgan Chase",
-   "indirizzo": "0x07c44da0848960bff894f17584db8b2f60b2409e",
-   "robinhood": true,
-   "tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1793210263,
-   "ticker": "MCD",
-   "nome": "McDonald's",
-   "indirizzo": "0x2fdaa4604f10f4ae7f66fa48a174bcd25b1ece20",
-   "robinhood": true,
-   "tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1793210263,
-   "ticker": "PYPL",
-   "nome": "PayPal",
-   "indirizzo": "0xa45abdc77918f7b9199b022eee400c0bc5712bd2",
-   "robinhood": true,
-   "tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1793210263,
-   "ticker": "UBER",
-   "nome": "Uber",
-   "indirizzo": "0xbd335aa5a1693f0121a5c0ef18a080e9958da78b",
-   "robinhood": true,
-   "tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec"
-  },
-  {
-   "tipo": "approvato",
-   "ts": 1793210263,
-   "ticker": "V",
-   "nome": "Visa",
-   "indirizzo": "0x9bff87700337babf5099e99f322f888dafb1d551",
-   "robinhood": true,
-   "tx": "0x7d0bd73845bb0acd87fb9b02868874f377b2aaea1ae244f3273dd66fff19ecec"
   }
  ],
  "baseline_ts": 1791838614,
- "aggiornato": 1795793246,
- "blocco": 124350771,
+ "aggiornato": 1795822772,
+ "blocco": 124623402,
  "factory": "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e",
  "metodo": "eth_getLogs (PairTokenApprovalUpdated + PairTokenEconomicsUpdated, blocchi da 10M) + eth_call approvedPairTokens/pairTokenEconomics",
  "primo_avvio": false,
